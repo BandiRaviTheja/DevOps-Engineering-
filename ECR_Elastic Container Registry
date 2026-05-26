@@ -1,1 +1,90 @@
+What is ECR in AWS?
+--------------------
+ECR Elastic container registry is a managed Docker container image repository service.
+ECR used to store docker images
+
+It is used to store, manage, version and secure container images (like Docker images) in the cloud
+
+Think of it like:
+------------------
+-Docker buildes the image
+-ECR stores the image
+-ECS/EKS pulls and runs the image
+
+Real-time example: Suppose you have a Python app:
+--------------------------------------------------
+
+  "docker build -t myapp ."
+
+This creates a Docker image locally
+
+Now you push it to ECR using the following command
+
+  "docker push"
+
+Now aws services like EKS, ECS, Lambda can pull and run it.
+
+Simple Analogy:
+----------------
+Docker = Kitchen
+used to prepare food
+  -Build image
+  -Run container
+  -Package app
+
+
+ECR = Refrigerator
+used to store food
+  -Save image
+  -Version images
+  -Share images
+
+
+ECS/EKS = Restaurant staff
+Used to serve food
+  -Pull image from ECR
+  -Run application
+
+Docker Workflow (without ECR)
+------------------------------
+code --> Docker build -->Local image -->Docker hub --> server pull ---> Run
+
+Problem:
+  -Public by defualt
+  -External registry
+  -Less AWS integration
+
+AWS ECR Workflow:
+-----------------
+code --> Docker build --> Push to ECR --> ECS/EKS pull -->Deploy
+
+Better because:
+  -IAM authentication
+  -Private respositories
+  -Encryption
+  -Vulnerability scanning
+  -Easy intergration with AWS CI/CD
+
+
+Commands Example:
+-------------------
+1.Build image
+
+"docker build -t myapp:v1 ."
+
+2.Create ECR repo manaully and push images to ECR
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
